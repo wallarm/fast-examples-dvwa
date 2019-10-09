@@ -10,3 +10,13 @@ Create your FAST node here and get TOKEN:
 https://my.wallarm.com/nodes
 
 Replace TOKEN in ./local.sh and run it
+
+## Intergation with Circle CI
+
+Create a project and pass following ENV variables:
+```
+TOKEN <YOUR WALLARM NODE TOKEN>
+```
+
+Example builds:
+https://circleci.com/gh/wallarm/fast-examples-dvwa/

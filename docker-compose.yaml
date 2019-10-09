@@ -19,7 +19,7 @@ services:
       WALLARM_API_TOKEN: ${TOKEN}
       WALLARM_API_HOST: api.wallarm.com
       CI_MODE: recording
-      TEST_RUN_POLICY_ID: 215
+      # TEST_RUN_POLICY_ID: 215
       ALLOWED_HOSTS: dvwa
     ports:
       - '8080:8080'

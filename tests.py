@@ -37,11 +37,6 @@ driver.find_element_by_name('btnSign').click()
 
 driver.get(server + '/vulnerabilities/fi/?page=file1.php')
 
-driver.get(server + '/vulnerabilities/sqli/')
-driver.find_element_by_name('id').click()
-driver.find_element_by_name('id').send_keys('1')
-driver.find_element_by_name('Submit').click()
-
 driver.get(server + '/vulnerabilities/xss_r')
 driver.find_element_by_name('name').click()
 driver.find_element_by_name('name').send_keys('usenmame')

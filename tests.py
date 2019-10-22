@@ -10,9 +10,9 @@ print("Waiting for docker startup...")
 time.sleep(10)
 
 # driver = webdriver.Firefox()
-driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
+driver = webdriver.Remote("http://selenium:10002/wd/hub", DesiredCapabilities.FIREFOX)
 
-server = 'http://dvwa:80'
+server = 'http://dvwa:10001'
 
 print('Starting selenium tests...')
 

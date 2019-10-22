@@ -5,14 +5,21 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 
-print("Waiting for docker startup...")
-# wait for docker compose startup
-time.sleep(10)
 
 # driver = webdriver.Firefox()
 driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
 
 server = 'http://dvwa:80'
+
+print("Waiting for selenium docker startup...")
+
+ready = False
+while (not ready):
+	try:
+		driver.get(server + '/login.php')
+		ready = True
+	except:
+		ready = False
 
 print('Starting selenium tests...')
 

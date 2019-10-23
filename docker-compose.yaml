@@ -6,8 +6,6 @@ services:
     build:
       context: ./.
       dockerfile: dvwa.Dockerfile
-    ports:
-      - '10001:80'
     networks:
       main:
         aliases:
@@ -21,8 +19,6 @@ services:
       CI_MODE: recording
       # TEST_RUN_POLICY_ID: 215
       ALLOWED_HOSTS: dvwa
-    ports:
-      - '10003:8080'
     networks:
       main:
         aliases:
@@ -30,8 +26,6 @@ services:
 
   selenium:
     image: selenium/standalone-firefox:latest
-    ports:
-      - '10002:4444'
     logging:
       driver: none
     environment:

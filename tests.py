@@ -7,11 +7,16 @@ import time
 
 
 # driver = webdriver.Firefox()
-driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
+print("Waiting for selenium docker startup...")
+
+driver = None
+while driver is None:
+	try:
+		driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
+	except:
+		pass
 
 server = 'http://dvwa:80'
-
-print("Waiting for selenium docker startup...")
 
 ready = False
 while (not ready):

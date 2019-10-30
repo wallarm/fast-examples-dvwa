@@ -4,26 +4,33 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
+from time import sleep
 
 
 # driver = webdriver.Firefox()
 print("Waiting for selenium docker startup...")
 
 driver = None
-while driver is None:
+remaining_attempts = 60
+while (driver is None) and (remaining_attempts > 0):
 	try:
 		driver = webdriver.Remote("http://selenium:4444/wd/hub", DesiredCapabilities.FIREFOX)
 	except:
+		remaining_attempts -= 1
+		sleep(1)
 		pass
 
 server = 'http://dvwa:80'
 
 ready = False
-while (not ready):
+remaining_attempts = 60
+while (not ready) and (remaining_attempts > 0):
 	try:
 		driver.get(server + '/login.php')
 		ready = True
 	except:
+		remaining_attempts -= 1
+		sleep(1)
 		ready = False
 
 print('Starting selenium tests...')

@@ -47,7 +47,20 @@ The changes ensure the build step does cleanup in case of failure. You may set t
 
 The preconfigured Jenkins example requires Jenkins to have access to `sudo` and `docker-compose`, which are lacking in the official Jenkins images. To ease the running of the provided example, you may use a pre-built image with the required components already present. One such image with startup instructions can be found here: https://github.com/fabianenardon/jenkins-docker-demo (requires installation of github plugin, uses the docker found on the host machine)
 
-To run the jenkins example locally copy the contents of `jenkins_home` into your own jenkins folder. Then check the configuration of the pipeline: both git and buildsteps should be set as described above.
+To run the local example, execute the following code:
+```
+git clone https://github.com/wallarm/fast-examples-dvwa
+git clone https://github.com/fabianenardon/jenkins-docker-demo
+cp fast-examples-dvwa/jenkins_home/jobs jenkins-docker-demo/jenkins_home/jobs -r
+cd jenkins-docker-demo
+sudo docker-compose build
+sudo docker-compose up
+```
+After these commands have completed, you will have a running Jenkins instance on 8081, with the jenkins:jenkins user set up.
+
+Finally, install the github plugin: https://wiki.jenkins.io/display/JENKINS/Github+Plugin (with restart)
+
+The DVWA example will be ready to run after the github plugin has been installed.
 
 ### Jenkins public demo:
 
